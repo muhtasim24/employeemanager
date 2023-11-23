@@ -1,8 +1,14 @@
 package tech.mmushfiq.employeemanager.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.io.Serializable; 
+// import javax.persistence.Entity;
+// import javax.persistence.Id;
+import java.io.Serializable;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id; 
 
 // want to map this class to a database
 

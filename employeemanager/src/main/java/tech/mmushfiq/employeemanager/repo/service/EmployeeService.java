@@ -1,13 +1,22 @@
-package tech.mmushfiq.employeemanager.serivce;
+package tech.mmushfiq.employeemanager.repo.service;
 
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import jakarta.transaction.Transactional;
+import tech.mmushfiq.employeemanager.exception.UserNotFoundException;
 import tech.mmushfiq.employeemanager.model.Employee;
 import tech.mmushfiq.employeemanager.repo.EmployeeRepo;
 
-@serivce
+@Service
+@Transactional
 public class EmployeeService {
     private final EmployeeRepo employeeRepo;
 
-    @Autowired 
+    @Autowired
     public EmployeeService(EmployeeRepo employeeRepo) {
         this.employeeRepo = employeeRepo;
     }
@@ -32,13 +41,13 @@ public class EmployeeService {
     // function to find an Employee by id
     public Employee findEmployeeById(Long id) {
         return employeeRepo.findEmployeeById(id)
+        .orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found"));
     }
 
     // function to delete an employee
     // pass in the id of the employee
     public void deleteEmployee(Long id) {
         // find the employee by the id, and if we dont throw out an error message
-        employeeRepo.deleteEmployeeById(id).orElseThrow(
-            () -> new UserNotFoundException("User by id " + id + " was not found"));
+        employeeRepo.deleteEmployeeById(id);
     }
 }
