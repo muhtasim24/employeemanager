@@ -18,4 +18,27 @@ public class EmployeeService {
         employee.setEmployeeCode(UUID.randomUUID().toString()); // this employee will get a random UUID
         return employeeRepo.save(employee);
     }
+
+    // function to return a list of All employees
+    public List<Employee> findAllEmployees() {
+        return employeeRepo.findAll();
+    }
+
+    // function to update the employee
+    public Employee updateEmployee(Employee employee) {
+        return employeeRepo.save(employee);
+    }
+
+    // function to find an Employee by id
+    public Employee findEmployeeById(Long id) {
+        return employeeRepo.findEmployeeById(id)
+    }
+
+    // function to delete an employee
+    // pass in the id of the employee
+    public void deleteEmployee(Long id) {
+        // find the employee by the id, and if we dont throw out an error message
+        employeeRepo.deleteEmployeeById(id).orElseThrow(
+            () -> new UserNotFoundException ("User by id " + id + " was not found"));
+    }
 }
