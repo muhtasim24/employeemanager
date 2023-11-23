@@ -1,5 +1,21 @@
 package tech.mmushfiq.employeemanager.serivce;
 
+import tech.mmushfiq.employeemanager.model.Employee;
+import tech.mmushfiq.employeemanager.repo.EmployeeRepo;
+
+@serivce
 public class EmployeeService {
-    private final EmployeeRepo
+    private final EmployeeRepo employeeRepo;
+
+    @Autowired 
+    public EmployeeService(EmployeeRepo employeeRepo) {
+        this.employeeRepo = employeeRepo;
+    }
+    
+    // method to add an employee 
+    // need to create the employee in the database as well
+    public Employee addEmployee(Employee employee) { 
+        employee.setEmployeeCode(UUID.randomUUID().toString()); // this employee will get a random UUID
+        return employeeRepo.save(employee);
+    }
 }
