@@ -39,6 +39,6 @@ public class EmployeeService {
     public void deleteEmployee(Long id) {
         // find the employee by the id, and if we dont throw out an error message
         employeeRepo.deleteEmployeeById(id).orElseThrow(
-            () -> new UserNotFoundException ("User by id " + id + " was not found"));
+            () -> new UserNotFoundException("User by id " + id + " was not found"));
     }
 }
