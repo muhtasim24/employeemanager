@@ -4,12 +4,10 @@ import { RouterOutlet } from '@angular/router';
 import { Employee } from './employee';
 import { EmployeeService } from './employee.service';
 import { response } from 'express';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  // standalone: true,
-  // imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
